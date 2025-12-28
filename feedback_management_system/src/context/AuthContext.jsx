@@ -6,26 +6,27 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Load user from localStorage on refresh
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-    const email = localStorage.getItem("email");
 
-    if (token && role) {
-      setUser({ email, role });
+    if (token) {
+      const decoded = JSON.parse(atob(token.split(".")[1]));
+      setUser({
+        email: decoded.sub,
+        role: decoded.role,
+      });
     }
     setLoading(false);
   }, []);
 
-  const login = (data) => {
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("role", data.role);
-    localStorage.setItem("email", data.email);
+  const login = (token) => {
+    localStorage.setItem("token", token);
+
+    const decoded = JSON.parse(atob(token.split(".")[1]));
 
     setUser({
-      email: data.email,
-      role: data.role,
+      email: decoded.sub,
+      role: decoded.role,
     });
   };
 
