@@ -1,13 +1,25 @@
 import axiosInstance from "./axios";
 
-export const addFeedback = (data) =>
-  axiosInstance.post("/feedback", data);
+// Get logged-in user's feedbacks
+export const getMyFeedbacks = async () => {
+  const res = await axiosInstance.get("/api/feedback");
+  return res.data;
+};
 
-export const getMyFeedbacks = () =>
-  axiosInstance.get("/feedback/my");
+// Add feedback
+export const addFeedback = async (data) => {
+  const res = await axiosInstance.post("/api/feedback", data);
+  return res.data;
+};
 
-export const deleteFeedback = (id) =>
-  axiosInstance.delete(`/feedback/${id}`);
+// Update feedback
+export const updateFeedback = async (id, data) => {
+  const res = await axiosInstance.put(`/api/feedback/${id}`, data);
+  return res.data;
+};
 
-export const getAllFeedbacks = () =>
-  axiosInstance.get("/admin/feedbacks");
+// Delete feedback
+export const deleteFeedback = async (id) => {
+  const res = await axiosInstance.delete(`/api/feedback/${id}`);
+  return res.data;
+};

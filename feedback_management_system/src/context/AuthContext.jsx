@@ -6,15 +6,25 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Load user on refresh
   useEffect(() => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const decoded = JSON.parse(atob(token.split(".")[1]));
-      setUser({
-        email: decoded.sub,
-        role: decoded.role,
-      });
+      try {
+        const decoded = JSON.parse(atob(token.split(".")[1]));
+
+        if (decoded.exp * 1000 < Date.now()) {
+          logout(); // token expired
+        } else {
+          setUser({
+            email: decoded.sub,
+            role: decoded.role,
+          });
+        }
+      } catch {
+        logout();
+      }
     }
     setLoading(false);
   }, []);
@@ -23,7 +33,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("token", token);
 
     const decoded = JSON.parse(atob(token.split(".")[1]));
-
     setUser({
       email: decoded.sub,
       role: decoded.role,
@@ -31,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
     setUser(null);
   };
 
