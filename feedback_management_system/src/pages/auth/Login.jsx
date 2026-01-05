@@ -16,7 +16,7 @@ const Login = () => {
   try {
     const res = await loginUser({ email, password });
 
-    login(res.token); // ✅ ONLY token
+    login(res.token); // ONLY token
 
     const decoded = JSON.parse(atob(res.token.split(".")[1]));
 

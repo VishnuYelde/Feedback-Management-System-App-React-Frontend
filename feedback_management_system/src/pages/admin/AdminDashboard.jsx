@@ -1,7 +1,12 @@
-export default function AdminDashboard() {
+import DashboardLayout from "../../components/layout/DashboardLayout";
+
+const AdminDashboard = () => {
   return (
-    <div className="p-6 text-2xl font-bold">
-      Admin Dashboard
-    </div>
+    <DashboardLayout>
+      <h1 className="text-2xl font-bold mb-4">Admin Dashboard</h1>
+      {/* admin content */}
+    </DashboardLayout>
   );
-}
+};
+
+export default AdminDashboard;
