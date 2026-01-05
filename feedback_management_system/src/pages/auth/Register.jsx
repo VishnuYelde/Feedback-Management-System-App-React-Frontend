@@ -32,6 +32,10 @@ const Register = () => {
     }
   };
 
+  const handleGoogleRegister = () => {
+    window.location.href = "http://localhost:8080/oauth2/authorization/google";
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-100">
       <form
@@ -41,6 +45,29 @@ const Register = () => {
         <h2 className="text-2xl font-bold mb-4 text-center text-green-600">
           Register
         </h2>
+
+        {/* GOOGLE OAUTH BUTTON */}
+        <p className="text-sm text-center text-gray-500 mb-4">
+          Register using Google
+        </p>
+
+        <button
+          type="button"
+          onClick={handleGoogleRegister}
+          className="w-full border py-2 mb-3 rounded flex justify-center items-center gap-2 hover:bg-gray-100"
+        >
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            alt="Google"
+            className="w-5 h-5"
+          />
+          Continue with Google
+        </button>
+
+        <div className="text-center text-gray-400">OR</div>
+        <p className="text-sm text-center text-gray-500 mb-4">
+          Create an account manually
+        </p>
 
         <input
           type="text"
