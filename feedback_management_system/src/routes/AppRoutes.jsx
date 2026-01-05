@@ -7,23 +7,32 @@ import Unauthorized from "../pages/Unauthorized";
 
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
-
-import AdminLayout from "../components/layout/AdminLayout";
-import UserLayout from "../components/layout/UserLayout";
-import AuthLayout from "../components/layout/AuthLayout";
+import PublicRoute from "./PublicRoute";
 
 const AppRoutes = () => {
   return (
     <Routes>
 
-      {/* ---------- AUTH ROUTES ---------- */}
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Route>
+      {/* PUBLIC ROUTES (Only for NOT logged-in users) */}
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
 
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        }
+      />
 
+      {/* ADMIN */}
       <Route
         path="/admin"
         element={
@@ -33,6 +42,7 @@ const AppRoutes = () => {
         }
       />
 
+      {/* USER */}
       <Route
         path="/user"
         element={
@@ -42,8 +52,8 @@ const AppRoutes = () => {
         }
       />
 
-
       <Route path="/unauthorized" element={<Unauthorized />} />
+
     </Routes>
   );
 };
