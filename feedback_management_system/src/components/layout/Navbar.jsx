@@ -19,7 +19,7 @@ const Navbar = () => {
       <h1 className="font-bold text-lg">Feedback Management System</h1>
 
       {/* CENTER LINKS */}
-      <div className="flex gap-4">
+      <div className="flex font-semibold gap-4">
         {user.role === "ADMIN" && (
           <Link to="/admin">
             Admin Dashboard
