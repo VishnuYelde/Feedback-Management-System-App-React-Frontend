@@ -19,7 +19,7 @@ const AddFeedback = ({ onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 bg-white p-4 rounded shadow">
+    <form onSubmit={handleSubmit} className="mb-6 bg-white p-4 rounded-2xl shadow-lg w-1/2">
       <input
         className="w-full border p-2 mb-2"
         placeholder="Title"
@@ -41,14 +41,16 @@ const AddFeedback = ({ onSuccess }) => {
         type="number"
         min="1"
         max="5"
-        className="w-full border p-2 mb-2"
+        className="w-full border p-2 mb-6"
         value={rating}
         onChange={(e) => setRating(e.target.value)}
       />
 
-      <button className="bg-blue-600 text-white px-4 py-2 rounded">
-        Add Feedback
-      </button>
+      <div className="flex items-center justify-center">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded mb-2">
+          Add Feedback
+        </button>
+      </div>
     </form>
   );
 };

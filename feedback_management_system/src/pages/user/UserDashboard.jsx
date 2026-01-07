@@ -19,10 +19,15 @@ const UserDashboard = () => {
   return (
     <DashboardLayout>
       <div className="p-6">
-        <h1 className="text-2xl font-bold mb-4">My Feedbacks</h1>
+        <h1 className="text-2xl font-bold mb-8 flex items-center justify-center">Add Feedbacks</h1>
 
-        <AddFeedback onSuccess={loadFeedbacks} />
+        <div className="flex items-center justify-center">
+          <AddFeedback onSuccess={loadFeedbacks} />
+        </div>
+      </div>
 
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-4 flex items-center justify-center">My Feedbacks</h1>
         <UserFeedbackList feedbacks={feedbacks} onChange={loadFeedbacks} />
       </div>
     </DashboardLayout>
