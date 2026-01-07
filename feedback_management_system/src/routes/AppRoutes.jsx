@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import OAuth2Redirect from "../pages/auth/OAuth2Redirect";
@@ -15,6 +15,9 @@ import PublicRoute from "./PublicRoute";
 const AppRoutes = () => {
   return (
     <Routes>
+
+      {/* DEFAULT ROUTE */}
+      <Route path="/" element={<Navigate to="/login" replace />} />
 
       {/* PUBLIC ROUTES (Only for NOT logged-in users) */}
       <Route

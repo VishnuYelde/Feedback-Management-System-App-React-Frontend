@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getMyFeedbacks } from "../../api/feedbackApi";
-import AddFeedback from "../../components/feedback/AddFeedback";
-import FeedbackList from "../../components/feedback/FeedbackList";
+import AddFeedback from "../../components/feedback/user/AddFeedback";
+import UserFeedbackList from "../../components/feedback/user/UserFeedbackList";
 import DashboardLayout from "../../components/layout/DashboardLayout";
 
 const UserDashboard = () => {
@@ -23,7 +23,7 @@ const UserDashboard = () => {
 
         <AddFeedback onSuccess={loadFeedbacks} />
 
-        <FeedbackList feedbacks={feedbacks} onChange={loadFeedbacks} />
+        <UserFeedbackList feedbacks={feedbacks} onChange={loadFeedbacks} />
       </div>
     </DashboardLayout>
   );

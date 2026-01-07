@@ -1,4 +1,4 @@
-import { deleteFeedback } from "../../api/feedbackApi";
+import { deleteFeedback } from "../../../api/feedbackApi";
 import EditFeedback from "./EditFeedback";
 import { useState } from "react";
 

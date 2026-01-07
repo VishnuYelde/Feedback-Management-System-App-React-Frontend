@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addFeedback } from "../../api/feedbackApi";
+import { addFeedback } from "../../../api/feedbackApi";
 
 const AddFeedback = ({ onSuccess }) => {
   const [title, setTitle] = useState("");
@@ -36,7 +36,7 @@ const AddFeedback = ({ onSuccess }) => {
         required
       />
 
-        Rating(1-5):
+      Rating(1-5):
       <input
         type="number"
         min="1"

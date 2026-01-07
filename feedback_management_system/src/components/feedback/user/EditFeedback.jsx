@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateFeedback } from "../../api/feedbackApi";
+import { updateFeedback } from "../../../api/feedbackApi";
 
 const EditFeedback = ({ feedback, onCancel, onSuccess }) => {
   const [title, setTitle] = useState(feedback.title);
